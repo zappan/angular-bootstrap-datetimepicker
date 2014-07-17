@@ -305,10 +305,10 @@ angular.module('ui.bootstrap.datetimepicker', [])
             if (configuration.dropdownSelector) {
               jQuery(configuration.dropdownSelector).dropdown('toggle');
             }
+            scope.ngModel = newDate;
             if (angular.isFunction(scope.onSetTime)) {
               scope.onSetTime(newDate, scope.ngModel);
             }
-            scope.ngModel = newDate;
             return dataFactory[scope.data.currentView](unixDate);
           }
         };
