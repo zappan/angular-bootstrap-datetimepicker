@@ -133,7 +133,7 @@ angular.module('ui.bootstrap.datetimepicker', [])
             // Truncate the last digit from the current year and subtract 1 to get the start of the decade
             var startDecade = (parseInt(selectedDate.year() / 10, 10) * 10);
             var startDate = moment.utc(selectedDate).year(startDecade - 1).startOf('year');
-            var activeYear = scope.ngModel ? moment(scope.ngModel).year() : 0;
+            var activeYear = scope.ngModel ? moment.utc(scope.ngModel).year() : 0;
 
             var result = {
               'currentView': 'year',
@@ -164,7 +164,7 @@ angular.module('ui.bootstrap.datetimepicker', [])
 
             var startDate = moment.utc(unixDate).startOf('year');
 
-            var activeDate = scope.ngModel ? moment(scope.ngModel).format('YYYY-MMM') : 0;
+            var activeDate = scope.ngModel ? moment.utc(scope.ngModel).format('YYYY-MMM') : 0;
 
             var result = {
               'previousView': 'year',
@@ -199,7 +199,7 @@ angular.module('ui.bootstrap.datetimepicker', [])
 
             var startDate = moment.utc(startOfMonth).subtract(Math.abs(startOfMonth.weekday() - configuration.weekStart), 'days');
 
-            var activeDate = scope.ngModel ? moment(scope.ngModel).format('YYYY-MMM-DD') : '';
+            var activeDate = scope.ngModel ? moment.utc(scope.ngModel).format('YYYY-MMM-DD') : '';
 
             var result = {
               'previousView': 'month',
@@ -240,7 +240,7 @@ angular.module('ui.bootstrap.datetimepicker', [])
           hour: function (unixDate) {
             var selectedDate = moment.utc(unixDate).hour(0).minute(0).second(0);
 
-            var activeFormat = scope.ngModel ? moment(scope.ngModel).format('YYYY-MM-DD H') : '';
+            var activeFormat = scope.ngModel ? moment.utc(scope.ngModel).format('YYYY-MM-DD H') : '';
 
             var result = {
               'previousView': 'day',
@@ -270,7 +270,7 @@ angular.module('ui.bootstrap.datetimepicker', [])
           minute: function (unixDate) {
             var selectedDate = moment.utc(unixDate).minute(0).second(0);
 
-            var activeFormat = scope.ngModel ? moment(scope.ngModel).format('YYYY-MM-DD H:mm') : '';
+            var activeFormat = scope.ngModel ? moment.utc(scope.ngModel).format('YYYY-MM-DD H:mm') : '';
 
             var result = {
               'previousView': 'hour',
@@ -314,7 +314,7 @@ angular.module('ui.bootstrap.datetimepicker', [])
         };
 
         var getUTCTime = function () {
-          var tempDate = (scope.ngModel ? moment(scope.ngModel).toDate() : new Date());
+          var tempDate = (scope.ngModel ? moment.utc(scope.ngModel).toDate() : new Date());
           return tempDate.getTime() - (tempDate.getTimezoneOffset() * 60000);
         };
 
